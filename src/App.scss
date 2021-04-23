@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 
-  .black-nav {
+  .blackNav {
     width: 100%;
     display: flex;
     background-color: black;
@@ -9,5 +9,11 @@
     padding: 20px;
     font-weight: bold;
     font-size: 20px;
+  }
+
+  .boardList {
+    margin-top: 30px;
+    text-align: left;
+    padding: 0 20px 0 20px;
   }
 }
