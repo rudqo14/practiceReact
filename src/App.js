@@ -6,7 +6,7 @@ function App() {
   let [like, setLike] = useState(0);
   
   const likeHandler = () => {
-    setLike(like+1);
+    setLike(like+2);
   }
 
   return (
