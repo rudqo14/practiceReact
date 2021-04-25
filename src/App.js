@@ -12,6 +12,7 @@ function App() {
   const likeHandler = () => {
     setLikeBtn(likeBtn + 1);
   };
+  
   const firstTitleHandler = () => {
     const newArray = [...title];
     title[0] === "일상 생활" ? (newArray[0] = "나의 이야기") : (newArray[0] = "일상 생활");
