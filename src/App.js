@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
+import "./Common.scss"
 
 function App() {
   let [title, setTitle] = useState([
@@ -52,12 +53,12 @@ function App() {
         <hr />
       </div>
       <div className="boardList">
-        <h3>{title[1]}</h3>
+        <h3>{title[1] + "   "}</h3>
         <p>내용</p>
         <hr />
       </div>
       <div className="boardList">
-        <h3>{title[2]}</h3>
+        <h3>{title[2] + "   "}</h3>
         <p>내용</p>
         <hr />
       </div>
