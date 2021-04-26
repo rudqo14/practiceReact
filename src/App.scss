@@ -1,3 +1,5 @@
+@import "/src/Common.scss";
+
 .App {
   text-align: center;
 
@@ -14,10 +16,20 @@
   .boardList {
     margin-top: 30px;
     text-align: left;
-    padding: 0 20px 0 20px;
+    padding: 0 20px 0;
+
+    .modalTitle {
+      cursor: pointer;
+    }
 
     .likeBtn {
       cursor: pointer;
     }
+  }
+
+  .modal {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: $aqua;
   }
 }
