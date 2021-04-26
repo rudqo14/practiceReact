@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./App.scss";
+import React, { useState } from "react";
+import "./Styles/App.scss";
 
 function App() {
   let [title, setTitle] = useState(["일상 생활", "개발 서적", "알고리즘"]);
