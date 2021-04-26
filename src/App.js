@@ -5,6 +5,7 @@ function App() {
   let [title, setTitle] = useState(["일상 생활", "개발 서적", "알고리즘"]);
   let [likeBtn, setLikeBtn] = useState([0, 2, 1]);
   let [modal, setModal] = useState(false);
+  let [clickTitle, setClickTitle] = useState(0);
 
   const firstTitleHandler = () => {
     const newArray = [...title];
@@ -23,11 +24,10 @@ function App() {
     newArray[likeNumbers] += 1;
     setLikeBtn(newArray);
   };
-  const modalTitleHandler = (e) => {
-    console.log(e.target.innerText);
-    if (e.target.innerText === "알고리즘") {
-      modal ? setModal(false) : setModal(true);
-    }
+
+  const modalTitleHandler = (likeNumbers) => {
+    setClickTitle(likeNumbers);
+    setModal(!modal);
   };
 
   return (
@@ -47,8 +47,8 @@ function App() {
         return (
           <div className="boardList">
             <h3
-              onClick={(e) => {
-                modalTitleHandler(e);
+              onClick={() => {
+                modalTitleHandler(likeNumbers);
               }}
             >
               {titleArray + "   "}
@@ -67,16 +67,16 @@ function App() {
           </div>
         );
       })}
-      {modal ? <Modal /> : null}
+      {modal ? <Modal title={title} clickTitle={clickTitle} /> : null}
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div>
       <div className="modal">
-        <h2>제목</h2>
+        <h2>{props.title[props.clickTitle]}</h2>
         <p>날짜</p>
         <hr />
       </div>
