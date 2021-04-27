@@ -7,6 +7,8 @@ function App() {
   let [modal, setModal] = useState(false);
   let [clickTitle, setClickTitle] = useState(0);
 
+  let [input, setInput] = useState("");
+
   const firstTitleHandler = () => {
     const newArray = [...title];
     title[0] === "일상 생활"
@@ -19,15 +21,24 @@ function App() {
     -deepCopy를 사용하여 수정*/
   };
 
-  const likeHandler = (likeNumbers) => {
-    const newArray = [...likeBtn];
-    newArray[likeNumbers] += 1;
-    setLikeBtn(newArray);
+  const likeHandler = (index) => {
+    const likeArray = [...likeBtn];
+    likeArray[index] += 1;
+    setLikeBtn(likeArray);
   };
 
-  const modalTitleHandler = (likeNumbers) => {
-    setClickTitle(likeNumbers);
+  const modalTitleHandler = (index) => {
+    setClickTitle(index);
     setModal(!modal);
+  };
+
+  const addBoardListHandler = () => {
+    const titleArray = [...title];
+    titleArray.unshift(input);
+    setTitle(titleArray);
+    const likeArray = [...likeBtn];
+    likeArray.unshift(0);
+    setLikeBtn(likeArray);
   };
 
   return (
@@ -43,12 +54,12 @@ function App() {
         <div className="sidebar" />
         버튼
       </button>
-      {title.map(function (titleArray, likeNumbers) {
+      {title.map(function (titleArray, index) {
         return (
-          <div className="boardList">
+          <div className="boardList" key={index}>
             <h3
               onClick={() => {
-                modalTitleHandler(likeNumbers);
+                modalTitleHandler(index);
               }}
             >
               {titleArray + "   "}
@@ -56,17 +67,33 @@ function App() {
             <button
               className="likeBtn"
               onClick={() => {
-                likeHandler(likeNumbers);
+                likeHandler(index);
               }}
             >
               👍
             </button>
-            {"   " + likeBtn[likeNumbers]}
+            {"   " + likeBtn[index]}
             <p>4월 22일 발행</p>
             <hr />
           </div>
         );
       })}
+      <div className="writeTitleContainer">
+        <input
+          className="writeTitleInput"
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+        />
+        <button
+          className="saveTitleBtn"
+          onClick={() => {
+            addBoardListHandler();
+          }}
+        >
+          저장
+        </button>
+      </div>
       {modal ? <Modal title={title} clickTitle={clickTitle} /> : null}
     </div>
   );
